@@ -11,6 +11,8 @@ import { AppBar } from 'components/AppBar/AppBar';
 import { Navigation } from 'components/Navigation/Navigation';
 import { AuthNav } from 'components/AuthNav/AuthNav';
 import { UserMenu } from 'components/UserMenu/UserMenu';
+import RegisterForm from 'components/RegisterForm/RegisterForm';
+import LogInForm from 'components/LogInForm/LogInForm';
 
 const App = () => {
   const contacts = useSelector(selectContacts);
@@ -29,6 +31,8 @@ const App = () => {
         <AuthNav />
         <UserMenu />
       </AppBar>
+      <RegisterForm />
+      <LogInForm />
       <h1>Phonebook</h1>
       <Section>
         <FormPhonebook></FormPhonebook>
