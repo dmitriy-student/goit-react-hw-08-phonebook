@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import css from './FormPhonebook.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
-import { addContact } from 'redux/operations';
+import { selectContacts } from 'redux/contacts/contactsSelectors';
+import { addContact } from 'redux/contacts/contactsOperations';
 
 export default function FormPhonebook({ formSubmit }) {
   const [name, setName] = useState('');

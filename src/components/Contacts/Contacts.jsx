@@ -1,7 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import css from './Contacts.module.css';
-import { selectFiltredContacts, selectIsLoading } from 'redux/selectors';
-import { removeContact } from 'redux/operations';
+import {
+  selectFiltredContacts,
+  selectIsLoading,
+} from 'redux/contacts/contactsSelectors';
+import { removeContact } from 'redux/contacts/contactsOperations';
 import { Loader } from '../Loader/Loader';
 
 export default function Contacts() {

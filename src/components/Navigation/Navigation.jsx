@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
+
 export const Navigation = () => {
   return (
-    <ul>
-      <li>Главная</li>
-      <li>Книга контактов</li>
-    </ul>
+    <nav>
+      <Link to={'/'}>Главная</Link>
+      <Link to={'/contacts'}>Книга контактов</Link>
+    </nav>
   );
 };
