@@ -8,6 +8,11 @@ const initialState = {
   isLoggedIn: false,
 };
 
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -17,16 +22,27 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.isLoggedIn = true;
     },
+    [authOperations.register.rejected]: handleRejected,
+
     [authOperations.logIn.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
     },
-    [authOperations.logOut.fulfilled](state, action) {
+    [authOperations.logIn.rejected]: handleRejected,
+
+    [authOperations.logOut.fulfilled](state) {
       state.user = '';
       state.token = '';
       state.isLoggedIn = false;
     },
+    [authOperations.logOut.rejected]: handleRejected,
+
+    [authOperations.refreshUser.fulfilled](state, action) {
+      state.user = action.payload;
+      state.isLoggedIn = true;
+    },
+    [authOperations.refreshUser.rejected]: handleRejected,
   },
 });
 

@@ -1,3 +1,9 @@
+import css from './Home.module.css';
+
 export const HomePage = () => {
-  return <h1>Please log in first</h1>;
+  return (
+    <div className={css.homePage}>
+      <h1>Welcome to the phonebook!</h1>
+    </div>
+  );
 };

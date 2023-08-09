@@ -9,11 +9,14 @@ import NotFoundPage from 'pages/NotFound/NotFound';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import * as authOperations from '../../redux/auth/authOperations';
+import { PrivateRoute } from 'components/PrivateRoute';
+import { RestrictedRoute } from 'components/RestrictedRoute';
 
 const App = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(authOperations.refreshUser);
+    dispatch(authOperations.refreshUser());
   }, [dispatch]);
 
   return (
@@ -21,9 +24,30 @@ const App = () => {
       <Routes>
         <Route path="/" element={<AppBar />}>
           <Route index element={<HomePage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LogInPage />} />
-          <Route path="/contacts" element={<ContactsPage />} />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<RegisterPage />}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<LogInPage />}
+              />
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+            }
+          />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

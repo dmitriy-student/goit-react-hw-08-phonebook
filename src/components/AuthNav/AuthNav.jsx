@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
+import css from './AuthNav.module.css';
 
 export const AuthNav = () => {
   return (
-    <ul>
-      <li>
-        <Link to={'/register'}>Регистрация</Link>
+    <ul className={css.authList}>
+      <li className={css.authItem}>
+        <Link to={'/register'}>Register</Link>
       </li>
-      <li>
-        <Link to={'/login'}>Логин</Link>
+      <li className={css.authItem}>
+        <Link to={'/login'}>Log In</Link>
       </li>
     </ul>
   );

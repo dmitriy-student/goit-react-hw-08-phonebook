@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as authOperations from '../../redux/auth/authOperations';
+import css from './RegisterForm.module.css';
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
@@ -30,15 +31,19 @@ export default function RegisterForm() {
   };
 
   return (
-    <div>
-      <h1>Страница регистрации</h1>
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <label>
-          Имя
+    <div className={css.registerBox}>
+      <h1>Sign Up</h1>
+      <form
+        onSubmit={handleSubmit}
+        autoComplete="off"
+        className={css.registerForm}
+      >
+        <label className={css.registerLabel}>
+          Name
           <input type="text" name="name" value={name} onChange={handleChange} />
         </label>
-        <label>
-          Почта
+        <label className={css.registerLabel}>
+          Email
           <input
             type="text"
             name="email"
@@ -46,8 +51,8 @@ export default function RegisterForm() {
             onChange={handleChange}
           />
         </label>
-        <label>
-          Пароль
+        <label className={css.registerLabel}>
+          Password
           <input
             type="password"
             name="password"
@@ -55,7 +60,7 @@ export default function RegisterForm() {
             onChange={handleChange}
           />
         </label>
-        <button type="submit">Отправить</button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );

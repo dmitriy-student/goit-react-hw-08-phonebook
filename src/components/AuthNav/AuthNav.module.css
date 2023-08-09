@@ -1,0 +1,8 @@
+/* .authItem {
+  margin-right: 10px;
+} */
+
+.authList {
+  display: flex;
+  gap: 20px;
+}
