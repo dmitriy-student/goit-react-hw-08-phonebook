@@ -39,7 +39,7 @@ export default function RegisterForm() {
   return (
     <div className={css.registerBox}>
       <h1>Sign Up</h1>
-      {error && (
+      {error !== null && (
         <p className={css.eroorMsg}>Something went wrong, try again!</p>
       )}
       <form
