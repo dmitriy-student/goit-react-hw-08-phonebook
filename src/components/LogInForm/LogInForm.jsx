@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as authOperations from '../../redux/auth/authOperations';
 import css from './LogInForm.module.css';
-import { getIsLoggedIn } from 'redux/auth/authSelectors';
+import { getError, getIsLoggedIn } from 'redux/auth/authSelectors';
 import { Navigate } from 'react-router-dom';
 
 export default function LogInForm() {
@@ -10,6 +10,7 @@ export default function LogInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const isLoggedIn = useSelector(getIsLoggedIn);
+  const error = useSelector(getError);
 
   if (isLoggedIn) return <Navigate to="/contacts" />;
 
@@ -34,6 +35,9 @@ export default function LogInForm() {
   return (
     <div className={css.loginBox}>
       <h1>Log In</h1>
+      {error && (
+        <p className={css.eroorMsg}>Something went wrong, try again!</p>
+      )}
       <form
         onSubmit={handleSubmit}
         autoComplete="off"

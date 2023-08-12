@@ -16,3 +16,8 @@
   margin-bottom: 10px;
   gap: 15px;
 }
+
+.eroorMsg {
+  color: red;
+  font-size: 20px;
+}

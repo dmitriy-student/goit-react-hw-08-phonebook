@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as authOperations from '../../redux/auth/authOperations';
 import css from './RegisterForm.module.css';
-import { getIsLoggedIn } from 'redux/auth/authSelectors';
+import { getError, getIsLoggedIn } from 'redux/auth/authSelectors';
 import { Navigate } from 'react-router-dom';
 
 export default function RegisterForm() {
@@ -11,6 +11,7 @@ export default function RegisterForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const isLoggedIn = useSelector(getIsLoggedIn);
+  const error = useSelector(getError);
 
   if (isLoggedIn) return <Navigate to="/contacts" />;
 
@@ -38,6 +39,9 @@ export default function RegisterForm() {
   return (
     <div className={css.registerBox}>
       <h1>Sign Up</h1>
+      {error && (
+        <p className={css.eroorMsg}>Something went wrong, try again!</p>
+      )}
       <form
         onSubmit={handleSubmit}
         autoComplete="off"
