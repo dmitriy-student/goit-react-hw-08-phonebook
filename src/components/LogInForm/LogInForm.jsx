@@ -35,7 +35,7 @@ export default function LogInForm() {
   return (
     <div className={css.loginBox}>
       <h1>Log In</h1>
-      {error && (
+      {error !== 'null' && (
         <p className={css.eroorMsg}>Something went wrong, try again!</p>
       )}
       <form
