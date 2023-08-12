@@ -1,12 +1,17 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as authOperations from '../../redux/auth/authOperations';
 import css from './LogInForm.module.css';
+import { getIsLoggedIn } from 'redux/auth/authSelectors';
+import { Navigate } from 'react-router-dom';
 
 export default function LogInForm() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const isLoggedIn = useSelector(getIsLoggedIn);
+
+  if (isLoggedIn) return <Navigate to="/contacts" />;
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
